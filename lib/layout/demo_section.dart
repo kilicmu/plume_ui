@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plume_ui/config/default_font.dart';
 
 class DemoSection extends StatefulWidget {
   const DemoSection({Key? key, this.children = const [], this.title = ""})
@@ -15,9 +14,12 @@ class _DemoSectionState extends State<DemoSection> {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(
-        widget.title,
-        style: const TextStyle(fontSize: 20),
+      Padding(
+        padding: const EdgeInsets.only(left: 12),
+        child: Text(
+          widget.title,
+          style: const TextStyle(fontSize: 20, color: Colors.grey),
+        ),
       ),
       Padding(
           padding: const EdgeInsets.only(top: 10.0),

@@ -11,14 +11,20 @@ class DemoLayout extends StatefulWidget {
 class _DemoLayoutState extends State<DemoLayout> {
   @override
   Widget build(BuildContext context) {
-    return (Scrollbar(
-        child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: widget.children
-                  .map((e) => Padding(
-                      padding: const EdgeInsets.only(top: 8.0), child: e))
-                  .toList(),
-            ))));
+    final name = ModalRoute.of(context)?.settings.arguments as String? ?? "";
+    return Scaffold(
+        appBar: AppBar(title: Text(name)),
+        body: DecoratedBox(
+            decoration: const BoxDecoration(color: Color(0xFFFAFAFA)),
+            child: (Scrollbar(
+                child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: widget.children
+                          .map((e) => Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: e))
+                          .toList(),
+                    ))))));
   }
 }
