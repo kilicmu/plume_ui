@@ -13,17 +13,18 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("plume ui demo")),
-        body: SingleChildScrollView(
-            child: Column(
-                children: components.map((e) {
-          return Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: PlButton(
-                  size: PlButtonSize.cell,
-                  text: e.name,
-                  onTap: () => Navigator.of(context)
-                      .pushNamed(e.path, arguments: e.name)));
-        }).toList())));
+      appBar: AppBar(title: const Text("plume ui")),
+      body: SingleChildScrollView(
+          child: Column(
+              children: components
+                  .map((e) => Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: PlButton(
+                          size: PlButtonSize.cell,
+                          text: e.name,
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(e.path, arguments: e.name))))
+                  .toList())),
+    );
   }
 }
