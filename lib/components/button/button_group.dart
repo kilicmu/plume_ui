@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:plume_ui/components/button/button.dart';
 
-class PlButtonGroup extends StatelessWidget {
-  PlButtonGroup(
+class CrButtonGroup extends StatelessWidget {
+  CrButtonGroup(
       {Key? key, this.children = const [], this.axis = Axis.horizontal})
       : assert(children.length >= 2),
         super(key: key);
 
   Axis axis;
-  List<PlButton> children;
+  List<CrButton> children;
   @override
   Widget build(BuildContext context) {
     Widget Wrapper;

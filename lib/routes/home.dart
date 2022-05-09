@@ -19,8 +19,8 @@ class _HomeState extends State<Home> {
               children: components
                   .map((e) => Padding(
                       padding: const EdgeInsets.only(top: 10),
-                      child: PlButton(
-                          size: PlButtonSize.cell,
+                      child: CrButton(
+                          size: CrButtonSize.cell,
                           text: e.name,
                           onTap: () => Navigator.of(context)
                               .pushNamed(e.path, arguments: e.name))))

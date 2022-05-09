@@ -4,7 +4,7 @@ import 'package:plume_ui/common/utils.dart';
 import 'package:plume_ui/config/default_color.dart';
 import 'package:plume_ui/config/default_font.dart';
 
-enum PlButtonType {
+enum CrButtonType {
   normal,
   primary,
   success,
@@ -12,7 +12,7 @@ enum PlButtonType {
   danger,
 }
 
-enum PlButtonSize {
+enum CrButtonSize {
   mini,
   small,
   normal,
@@ -20,43 +20,43 @@ enum PlButtonSize {
   cell,
 }
 
-final Map<PlButtonType, Color> plButtonType2ColorRecord = {
-  PlButtonType.normal: Colors.white,
-  PlButtonType.primary: Primary.primary_5,
-  PlButtonType.success: Success.success_5,
-  PlButtonType.warning: Warning.warn_5,
-  PlButtonType.danger: Error.error_5,
+final Map<CrButtonType, Color> plButtonType2ColorRecord = {
+  CrButtonType.normal: Colors.white,
+  CrButtonType.primary: Primary.primary_5,
+  CrButtonType.success: Success.success_5,
+  CrButtonType.warning: Warning.warn_5,
+  CrButtonType.danger: Error.error_5,
 };
 
-final Map<PlButtonType, Color> plButtonType2BorderColorRecord = {
-  PlButtonType.normal: Grey.grey_5,
-  PlButtonType.primary: Primary.primary_6,
-  PlButtonType.success: Success.success_6,
-  PlButtonType.warning: Warning.warn_6,
-  PlButtonType.danger: Error.error_6,
+final Map<CrButtonType, Color> plButtonType2BorderColorRecord = {
+  CrButtonType.normal: Grey.grey_5,
+  CrButtonType.primary: Primary.primary_6,
+  CrButtonType.success: Success.success_6,
+  CrButtonType.warning: Warning.warn_6,
+  CrButtonType.danger: Error.error_6,
 };
 
-final Map<PlButtonSize, Size> plButtonSize2DartSizeRecord = {
-  PlButtonSize.mini: const Size(52.0, 26.0),
-  PlButtonSize.small: const Size(68.0, 34.0),
-  PlButtonSize.normal: const Size(84.0, 42.0),
-  PlButtonSize.large: const Size(100.0, 50.0),
-  PlButtonSize.cell: const Size(double.infinity, 50.0),
+final Map<CrButtonSize, Size> plButtonSize2DartSizeRecord = {
+  CrButtonSize.mini: const Size(52.0, 26.0),
+  CrButtonSize.small: const Size(68.0, 34.0),
+  CrButtonSize.normal: const Size(84.0, 42.0),
+  CrButtonSize.large: const Size(100.0, 50.0),
+  CrButtonSize.cell: const Size(double.infinity, 50.0),
 };
 
-final Map<PlButtonSize, double> plButtonSize2FontSizeRecord = {
-  PlButtonSize.mini: FontSize.mini,
-  PlButtonSize.small: FontSize.small,
-  PlButtonSize.normal: FontSize.normal,
-  PlButtonSize.large: FontSize.large,
-  PlButtonSize.cell: FontSize.large,
+final Map<CrButtonSize, double> plButtonSize2FontSizeRecord = {
+  CrButtonSize.mini: FontSize.mini,
+  CrButtonSize.small: FontSize.small,
+  CrButtonSize.normal: FontSize.normal,
+  CrButtonSize.large: FontSize.large,
+  CrButtonSize.cell: FontSize.large,
 };
 
-class PlButton extends StatefulWidget {
-  PlButton({
+class CrButton extends StatefulWidget {
+  CrButton({
     Key? key,
-    this.type = PlButtonType.normal,
-    this.size = PlButtonSize.normal,
+    this.type = CrButtonType.normal,
+    this.size = CrButtonSize.normal,
     this.plain = false,
     this.loading = false,
     this.disabled = false,
@@ -79,13 +79,13 @@ class PlButton extends StatefulWidget {
       }
     }
 
-    if (plain && type == PlButtonType.normal) {
+    if (plain && type == CrButtonType.normal) {
       assert(true);
     }
   }
 
-  final PlButtonType type;
-  final PlButtonSize size;
+  final CrButtonType type;
+  final CrButtonSize size;
   final bool plain;
   final bool disabled;
   final String? text;
@@ -102,10 +102,10 @@ class PlButton extends StatefulWidget {
   final Function() onTap;
 
   @override
-  State<PlButton> createState() => _PlButtonState();
+  State<CrButton> createState() => _CrButtonState();
 }
 
-class _PlButtonState extends State<PlButton>
+class _CrButtonState extends State<CrButton>
     with SingleTickerProviderStateMixin {
   late AnimationController waveController;
   late Animation<double> waveAnimation;
@@ -150,7 +150,7 @@ class _PlButtonState extends State<PlButton>
     final onlyText = widget.onlyText;
 
     var s = plButtonSize2DartSizeRecord[size] ??
-        plButtonSize2DartSizeRecord[PlButtonSize.normal]!;
+        plButtonSize2DartSizeRecord[CrButtonSize.normal]!;
     if (round && text == null && child == null) {
       s = Size.square(s.height);
     }
@@ -158,7 +158,7 @@ class _PlButtonState extends State<PlButton>
       var color = Colors.transparent;
       if (!onlyText) {
         color = plButtonType2ColorRecord[type] ??
-            plButtonType2ColorRecord[PlButtonType.normal]!;
+            plButtonType2ColorRecord[CrButtonType.normal]!;
       }
       if (disabled) {
         color = lignter(color);
@@ -166,12 +166,12 @@ class _PlButtonState extends State<PlButton>
       return color;
     })();
     final fontSize = plButtonSize2FontSizeRecord[size] ??
-        plButtonSize2FontSizeRecord[PlButtonSize.normal];
+        plButtonSize2FontSizeRecord[CrButtonSize.normal];
 
     final bc = (() {
       var color = !onlyText
           ? plButtonType2BorderColorRecord[type] ??
-              plButtonType2BorderColorRecord[PlButtonType.normal]!
+              plButtonType2BorderColorRecord[CrButtonType.normal]!
           : Colors.transparent;
       if (disabled) {
         color = lignter(color);
@@ -182,7 +182,7 @@ class _PlButtonState extends State<PlButton>
     final textColor = (() {
       if (onlyText) {
         var color = Colors.transparent;
-        if (type == PlButtonType.normal) {
+        if (type == CrButtonType.normal) {
           color = Grey.grey_7;
         } else {
           color = plButtonType2ColorRecord[type] ?? Grey.grey_7;
@@ -195,11 +195,11 @@ class _PlButtonState extends State<PlButton>
 
       if (plain) {
         var color = Colors.transparent;
-        if (type == PlButtonType.normal) {
+        if (type == CrButtonType.normal) {
           color = Grey.grey_7;
         } else {
           color = plButtonType2ColorRecord[type] ??
-              plButtonType2ColorRecord[PlButtonType.normal]!;
+              plButtonType2ColorRecord[CrButtonType.normal]!;
         }
         if (disabled) {
           color = lignter(color);
@@ -217,17 +217,15 @@ class _PlButtonState extends State<PlButton>
       width: 1,
     );
 
-    BoxConstraints createConstraints() {
-      if (size == PlButtonSize.cell) {
+    BoxConstraints constraints = () {
+      if (size == CrButtonSize.cell) {
         return const BoxConstraints(minWidth: double.infinity);
       }
       if (text != null) {
         return BoxConstraints(minWidth: s.width, maxHeight: s.height);
       }
       return BoxConstraints.tight(s);
-    }
-
-    BoxConstraints constraints = createConstraints();
+    }();
 
     final List<BoxShadow> boxShadow = [];
     if (waveAnimation.value > 0 && !onlyText) {
@@ -271,7 +269,10 @@ class _PlButtonState extends State<PlButton>
     final truthyDisabled = disabled || loading;
 
     final textStyle = TextStyle(
-        color: textColor, fontSize: fontSize, overflow: TextOverflow.ellipsis);
+        color: textColor,
+        fontSize: fontSize,
+        overflow: TextOverflow.ellipsis,
+        textBaseline: TextBaseline.ideographic);
 
     final children = <Widget>[];
 
