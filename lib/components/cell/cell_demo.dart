@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:plume_ui/components/cell/cell.dart';
 import 'package:plume_ui/layout/demo_layout.dart';
@@ -8,6 +10,7 @@ class CrCellDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO Demo完善
     return DemoLayout(
       children: [
         DemoSection(
@@ -16,10 +19,8 @@ class CrCellDemo extends StatelessWidget {
             CrCell(
                 title: "俺是一个默认的 cell",
                 subTitle: "详情",
-                onTap: () {
-                  Navigator.of(context).pushNamed("/cell");
-                },
-                preview: "preview1")
+                onTap: () {},
+                preview: "hello")
           ],
         )
       ],

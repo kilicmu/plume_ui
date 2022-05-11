@@ -26,9 +26,11 @@ class CrCell<PT> extends StatefulWidget {
 
 class _CrCellState extends State<CrCell> {
   bool isPressing = false;
+
   @override
   Widget build(BuildContext context) {
     final bkColor = isPressing ? Grey.grey_2 : Colors.white;
+    final borderColor = Grey.grey_2;
     final heavyFontColor = chooseFontColorFromColor(bkColor, divide: 1);
     final normalFontColor = chooseFontColorFromColor(bkColor, divide: 2);
     final title = Text(widget.title,
@@ -70,16 +72,15 @@ class _CrCellState extends State<CrCell> {
     final subTitleRowChildren =
         [subTitle, rightIcon].where((e) => e != null).toList() as List<Widget>;
 
-    final mainColumnChildren = <Widget>[
-      Flex(
-        direction: Axis.horizontal,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(children: titleRowChildren),
-          Row(children: subTitleRowChildren)
-        ],
-      ),
-    ];
+    final mainColumnFirstLine = Flex(
+      direction: Axis.horizontal,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(children: titleRowChildren),
+        Row(children: subTitleRowChildren)
+      ],
+    );
+    final mainColumnChildren = <Widget>[mainColumnFirstLine];
 
     if (PreviewWidget != null) {
       mainColumnChildren.add(ConstrainedBox(
@@ -88,39 +89,44 @@ class _CrCellState extends State<CrCell> {
               padding: const EdgeInsets.only(top: 8.0), child: PreviewWidget)));
     }
 
+    _onTapDown(detail) {
+      if (onCustomTap == null) return;
+      setState(() {
+        isPressing = true;
+      });
+    }
+
+    _onTapCancel() {
+      if (onCustomTap == null) return;
+      setState(() {
+        isPressing = false;
+      });
+    }
+
+    _onTapUp(detail) {
+      if (onCustomTap == null) return;
+      setState(() {
+        isPressing = false;
+        onCustomTap();
+      });
+    }
+
     return GestureDetector(
-        onTapDown: (detail) {
-          setState(() {
-            isPressing = true;
-          });
-        },
-        onTapCancel: () {
-          setState(() {
-            isPressing = false;
-          });
-        },
-        onTapUp: (detail) {
-          setState(() {
-            isPressing = false;
-            if (onCustomTap == null) {
-              return;
-            }
-            onCustomTap();
-          });
-        },
-        child: ConstrainedBox(
+        onTapDown: _onTapDown,
+        onTapCancel: _onTapCancel,
+        onTapUp: _onTapUp,
+        child: Container(
             constraints: const BoxConstraints(
                 minHeight: 54.0, minWidth: double.infinity),
-            child: Container(
-                decoration: BoxDecoration(
-                    color: bkColor, border: Border.all(color: Grey.grey_2)),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 22.0, vertical: 16.0),
-                  child: Flex(
-                      direction: Axis.vertical,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Column(children: mainColumnChildren)]),
-                ))));
+            decoration: BoxDecoration(
+                color: bkColor, border: Border.all(color: borderColor)),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 22.0, vertical: 16.0),
+              child: Flex(
+                  direction: Axis.vertical,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Column(children: mainColumnChildren)]),
+            )));
   }
 }
