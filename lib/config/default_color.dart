@@ -38,6 +38,8 @@ class Error {
   static const error_5 = Color(0xFFFE5F54);
   static const error_6 = Color(0xFFDE3F54);
   static const error_7 = Color(0xFFBE1F54);
+
+  Error(String s);
 }
 
 class Grey {

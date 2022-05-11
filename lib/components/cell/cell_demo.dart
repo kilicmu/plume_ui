@@ -14,9 +14,12 @@ class CrCellDemo extends StatelessWidget {
           title: "默认",
           children: [
             CrCell(
-              title: "hello",
-              subTitle: "详情",
-            )
+                title: "俺是一个默认的 cell",
+                subTitle: "详情",
+                onTap: () {
+                  Navigator.of(context).pushNamed("/cell");
+                },
+                preview: "preview1")
           ],
         )
       ],

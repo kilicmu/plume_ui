@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
           child: Column(
               children: components
                   .map((e) => Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(top: 8),
                       child: CrButton(
                           size: CrButtonSize.cell,
                           text: e.name,
