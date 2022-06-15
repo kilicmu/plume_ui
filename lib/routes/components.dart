@@ -10,4 +10,5 @@ class ComponentsDescription {
 const components = <ComponentsDescription>[
   ComponentsDescription(name: "button", path: "/button"),
   ComponentsDescription(name: "cell", path: "/cell"),
+  ComponentsDescription(name: "card", path: "/card"),
 ];

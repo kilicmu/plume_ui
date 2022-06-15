@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("plume ui")),
+      appBar: AppBar(title: const Text("corner ui")),
       body: SingleChildScrollView(
           child: Column(
               children: components
