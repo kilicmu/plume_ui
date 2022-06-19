@@ -51,3 +51,12 @@ class Grey {
   static const grey_6 = Color(0xFFA4A4A4);
   static const grey_7 = Color(0xFF747474);
 }
+
+class TextColor {
+  static const h1 = Grey.grey_7;
+  static const h2 = Grey.grey_7;
+  static const h3 = Grey.grey_7;
+  static const h4 = Grey.grey_7;
+  static const h5 = Grey.grey_7;
+  static const text = Grey.grey_6;
+}
