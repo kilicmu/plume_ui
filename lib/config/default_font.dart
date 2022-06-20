@@ -20,5 +20,5 @@ class FontStyle {
   static const h5 = TextStyle(
       fontSize: 12.0, color: TextColor.h5, fontWeight: FontWeight.w600);
   static const text =
-      TextStyle(fontSize: FontSize.normal, color: TextColor.text);
+      TextStyle(fontSize: FontSize.small, color: TextColor.text);
 }
