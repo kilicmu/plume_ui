@@ -18,7 +18,6 @@ class CrCard<T> extends StatefulWidget {
     String? mediaTitle,
     String? mediaSubTitle,
     T? mediaContent,
-    this.mediaContentLine = 1,
     List<Widget> mediaActions = const [],
     this.expand,
     Size? size,
@@ -53,6 +52,7 @@ class CrCard<T> extends StatefulWidget {
     final mediaImageFlex = direction == Axis.vertical ? 14 : 8;
 
     mediaImageWidget = () {
+      if (mediaImage == null) return null;
       var fit = BoxFit.fitWidth;
       return Expanded(
           flex: mediaImageFlex,
@@ -60,7 +60,7 @@ class CrCard<T> extends StatefulWidget {
               child: SizedBox(
                   width: double.infinity,
                   height: truthSize.height,
-                  child: FittedBox(fit: fit, child: mediaImage!))));
+                  child: FittedBox(fit: fit, child: mediaImage))));
     }();
 
     mediaTitleWidget = mediaTitle != null
@@ -77,7 +77,9 @@ class CrCard<T> extends StatefulWidget {
         : null;
 
     mediaActionsWidget = (() {
-      if (mediaActions.isEmpty) return null;
+      if (mediaActions.isEmpty) {
+        return null;
+      }
       return Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: mediaActions,
@@ -122,7 +124,6 @@ class CrCard<T> extends StatefulWidget {
   late final Widget? mediaTitleWidget;
   late final Widget? mediaSubTitleWidget;
   late final Widget? mediaContentWidget;
-  final int mediaContentLine;
   late final Widget? mediaActionsWidget;
   final Widget? expand;
   late final Size truthSize;
@@ -181,9 +182,9 @@ class _CrCardState extends State<CrCard> {
     });
 
     return Container(
-      constraints: BoxConstraints(maxHeight: height, minWidth: width),
-      decoration: decoration,
-      child: guessedContent,
-    );
+        width: width,
+        height: height,
+        decoration: decoration,
+        child: guessedContent);
   }
 }

@@ -15,7 +15,21 @@ class _CrCardDemoState extends State<CrCardDemo> {
   @override
   Widget build(BuildContext context) {
     return DemoLayout(children: [
-      DemoSection(title: "普通卡片", children: [
+      DemoSection(title: "默认卡片", children: [
+        CrCard(
+            size: Size.fromHeight(160.0),
+            child: Container(
+              child: Text("hello"),
+            ))
+      ]),
+      DemoSection(title: "描边卡片", children: [
+        CrCard(size: Size.fromHeight(160.0), type: CardTypes.outline)
+      ]),
+      DemoSection(
+        title: "圆角卡片",
+        children: [CrCard(size: Size.fromHeight(160.0), round: true)],
+      ),
+      DemoSection(title: "媒体卡片", children: [
         CrCard(
           mediaImage: Image.network(
             'https://wx3.sinaimg.cn/mw2000/3c30266bgy1h27u6azjejj21sc2dsnpd.jpg',
@@ -27,13 +41,13 @@ class _CrCardDemoState extends State<CrCardDemo> {
           mediaContent: "这里是内容.这里是内容这里是内容",
           mediaActions: [
             CrButton(
-              size: CrButtonSize.mini,
-              type: CrButtonType.danger,
+              size: CrButtonSize.small,
+              type: CrButtonType.primary,
               onlyText: true,
               text: "取消",
             ),
             CrButton(
-              size: CrButtonSize.mini,
+              size: CrButtonSize.small,
               type: CrButtonType.primary,
               onlyText: true,
               text: "确认",
@@ -41,22 +55,22 @@ class _CrCardDemoState extends State<CrCardDemo> {
           ],
         ),
         CrCard(
-          mediaImage: Image.network(
-            'https://wx3.sinaimg.cn/mw2000/3c30266bgy1h27u6azjejj21sc2dsnpd.jpg',
-          ),
-          direction: Axis.vertical,
-          mediaTitle: "可能不错的标题",
-          mediaSubTitle: "子标题yeahyeahyeah",
-          mediaContent: "",
-          mediaActions: [
-            CrButton(
-              size: CrButtonSize.mini,
-              type: CrButtonType.primary,
-              onlyText: true,
-              text: "确认",
-            )
-          ],
-        )
+            mediaImage: Image.network(
+              'https://wx3.sinaimg.cn/mw2000/3c30266bgy1h27u6azjejj21sc2dsnpd.jpg',
+            ),
+            direction: Axis.vertical,
+            mediaTitle: "可能不错的标题",
+            mediaSubTitle: "子标题yeahyeahyeah",
+            mediaContent: "",
+            mediaActions: [
+              CrButton(
+                size: CrButtonSize.mini,
+                type: CrButtonType.primary,
+                onlyText: true,
+                text: "确认",
+              )
+            ],
+            expand: Container(child: Text("hello")))
       ])
     ]);
   }

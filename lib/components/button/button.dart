@@ -222,7 +222,10 @@ class _CrButtonState extends State<CrButton>
         return const BoxConstraints(minWidth: double.infinity);
       }
       if (text != null) {
-        return BoxConstraints(minWidth: s.width, maxHeight: s.height);
+        if (!onlyText) {
+          return BoxConstraints(minWidth: s.width, maxHeight: s.height);
+        }
+        return const BoxConstraints();
       }
       return BoxConstraints.tight(s);
     }();
