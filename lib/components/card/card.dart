@@ -173,6 +173,7 @@ class _CrCardState extends State<CrCard> {
       final _mc = Flex(
         direction: direction,
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [mediaImageWidget, mediaContentWidget]
             .where((el) => el != null)
             .toList() as List<Widget>,

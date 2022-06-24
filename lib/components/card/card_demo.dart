@@ -39,20 +39,20 @@ class _CrCardDemoState extends State<CrCardDemo> {
           mediaTitle: "可能不错的标题",
           mediaSubTitle: "子标题yeahyeahyeah",
           mediaContent: "这里是内容.这里是内容这里是内容",
-          mediaActions: [
-            CrButton(
-              size: CrButtonSize.small,
-              type: CrButtonType.primary,
-              onlyText: true,
-              text: "取消",
-            ),
-            CrButton(
-              size: CrButtonSize.small,
-              type: CrButtonType.primary,
-              onlyText: true,
-              text: "确认",
-            ),
-          ],
+          // mediaActions: [
+          //   CrButton(
+          //     size: CrButtonSize.small,
+          //     type: CrButtonType.primary,
+          //     onlyText: true,
+          //     text: "取消",
+          //   ),
+          //   CrButton(
+          //     size: CrButtonSize.small,
+          //     type: CrButtonType.primary,
+          //     onlyText: true,
+          //     text: "确认",
+          //   ),
+          // ],
         ),
         CrCard(
             mediaImage: Image.network(
