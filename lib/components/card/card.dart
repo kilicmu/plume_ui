@@ -97,24 +97,24 @@ class CrCard<T> extends StatefulWidget {
             margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: List<Widget>.from([
                   mediaTitleWidget,
                   mediaSubTitleWidget,
                   Expanded(
                       child: SingleChildScrollView(
-                    child: Text(
-                      mediaContent,
-                      style: FontStyle.text,
-                      softWrap: true,
-                    ),
-                  )),
+                        child: Text(
+                          mediaContent,
+                          style: FontStyle.text,
+                          softWrap: true,
+                        ),
+                      )),
                   mediaActionsWidget
-                ].where((el) => el != null).toList() as List<Widget>));
+                ].where((el) => el != null).toList())));
 
         return Expanded(flex: filledFlex - mediaImageFlex, child: _c);
       }
       throw Error("property 'mediaContent' only support String or Widget");
-    })() as Widget?;
+    })() as dynamic;
   }
 
   final CardTypes type;
@@ -173,9 +173,8 @@ class _CrCardState extends State<CrCard> {
       final _mc = Flex(
         direction: direction,
         mainAxisAlignment: MainAxisAlignment.start,
-        children: [mediaImageWidget, mediaContentWidget]
-            .where((el) => el != null)
-            .toList() as List<Widget>,
+        children: List<Widget>.from([mediaImageWidget, mediaContentWidget]
+            .where((el) => el != null)),
       );
 
       return ClipRRect(borderRadius: borderRadius, child: _mc);

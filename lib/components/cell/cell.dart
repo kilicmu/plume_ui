@@ -101,9 +101,9 @@ class _CrCellState extends State<CrCell> {
     final onCustomTap = widget.onTap;
 
     final titleRowChildren =
-        [icon, title].where((e) => e != null).toList() as List<Widget>;
+    List<Widget>.from([icon, title].where((e) => e != null));
     final subTitleRowChildren =
-        [subTitle, rightIcon].where((e) => e != null).toList() as List<Widget>;
+    List<Widget>.from([subTitle, rightIcon].where((e) => e != null));
 
     final mainColumnFirstLine = Flex(
       direction: Axis.horizontal,
