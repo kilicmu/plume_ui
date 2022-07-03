@@ -173,8 +173,10 @@ class _CrCardState extends State<CrCard> {
       final _mc = Flex(
         direction: direction,
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: List<Widget>.from([mediaImageWidget, mediaContentWidget]
             .where((el) => el != null)),
+
       );
 
       return ClipRRect(borderRadius: borderRadius, child: _mc);
